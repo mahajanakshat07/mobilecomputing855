@@ -19,6 +19,7 @@ class Quiz : AppCompatActivity() {
         val dc = Room.databaseBuilder(applicationContext, QuizDB::class.java, "Quiiz").build()
 
        /*Thread{
+
             var abc1 = QuizEntity()
               abc1.ques = "In which year did Maradona score a goal with his hand?"
               abc1.a = "1980"
@@ -98,153 +99,154 @@ class Quiz : AppCompatActivity() {
            abc10.d = "Tottenham"
            abc10.e = "Liverpool"
            dc.print().insert(abc10)
-
-           dc.print().insert(abc6)
            runOnUiThread()
            {
                Toast.makeText(this, "Questions saved", Toast.LENGTH_SHORT).show()
            }
+       }.start()
 
 
-
-
-          }.start()*/
-  /* Thread{
+        Thread{
             var lip : Array<QuizEntity> = dc.print().read()
             runOnUiThread()
-            {   textView10.visibility = View.VISIBLE
-                textView10.text = lip.size.toString()
+            {
+                textView6.text = lip.size.toString()
             }
-
-        }.start()*/
-
-        Thread {
-            var lip: Array<QuizEntity> = dc.print().read()
-            var i = 0
-            var prize = 0
-            while (i < (lip.size) - 1) {
-                runOnUiThread()
-                {
-                    ques.text = lip[i].ques
-                    a.text = lip[i].a
-                    b.text = lip[i].b
-                    c.text = lip[i].c
-                    d.text = lip[i].d
-                }
-
-                var answer = ""
-                Help1.setOnClickListener()
-                {
-                    if (a.text.equals(lip[i].e))
-                    {
-
-                        b.visibility = View.GONE
-                        c.visibility = View.GONE
-                    }
-                    else if (b.text.equals(lip[i].e))
-                    {
-                        c.visibility = View.GONE
-                        d.visibility = View.GONE
-                    }
-                    else if (c.text.equals(lip[i].e))
-                    {
-                        a.visibility = View.GONE
-                        d.visibility = View.GONE
-                    }
-                    else
-                    {
-                        c.visibility = View.GONE
-                        a.visibility = View.GONE
-                    }
-                    runOnUiThread()
-                    {
-                        Toast.makeText(this, "You have taken 50-50 helpline", Toast.LENGTH_SHORT).show()
-                    }
-                    Help1.visibility = View.GONE
-                }
-
-
-                submit.setOnClickListener()
-                {
-                    var selected: Int = well.checkedRadioButtonId
-                    when (selected) {
-                        R.id.a -> runOnUiThread()
-                        {
-                            answer = a.text.toString()
-                        }
-                        R.id.b -> runOnUiThread()
-                        {
-                            answer = b.text.toString()
-                        }
-                        R.id.c -> runOnUiThread()
-                        {
-                            answer = c.text.toString()
-                        }
-                        R.id.d -> runOnUiThread()
-                        {
-                            answer = d.text.toString()
-                        }
-                    }
-
-                    if (answer.equals(lip[i].e))
-                    {
-                        i++
-                        if(i==lip.size)
-                        {
-                                runOnUiThread()
-                                {
-                                    val intent = Intent(this,Final::class.java)
-                                    startActivity(intent)
-                                }
-                        }
-                        runOnUiThread()
-                        {
-                            Toast.makeText(this, "You answered correctly", Toast.LENGTH_SHORT).show()
-                            textView10.visibility = (View.VISIBLE)
-                            var money = i*100
-                            prize += money
-
-                            textView10.text = prize.toString()
-
-                        }
-
-
-
-                    }
-                    else {
-                        runOnUiThread()
-                        {
-                            val intent = Intent(this,Lose::class.java)
-                            startActivity(intent)
-                            Toast.makeText(this, "You have selected wrong option", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    if(Help1.visibility==View.GONE)
-                    {
-                        runOnUiThread()
-                        {
-                            a.visibility = View.VISIBLE
-                            b.visibility = View.VISIBLE
-                            c.visibility = View.VISIBLE
-                            d.visibility = View.VISIBLE
-                        }
-
-                    }
-
-
-                }
-
-
-
-
-
-
-            }
-
 
         }.start()
 
 
-    }
+*/
+
+
+
+Thread {
+   var lip: Array<QuizEntity> = dc.print().read()
+   var i = 0
+   var prize = 0
+   while (i < (lip.size) - 1) {
+       runOnUiThread()
+       {
+           ques.text = lip[i].ques
+           a.text = lip[i].a
+           b.text = lip[i].b
+           c.text = lip[i].c
+           d.text = lip[i].d
+       }
+
+       var answer = ""
+       Help1.setOnClickListener()
+       {
+           if (a.text.equals(lip[i].e))
+           {
+
+               b.visibility = View.GONE
+               c.visibility = View.GONE
+           }
+           else if (b.text.equals(lip[i].e))
+           {
+               c.visibility = View.GONE
+               d.visibility = View.GONE
+           }
+           else if (c.text.equals(lip[i].e))
+           {
+               a.visibility = View.GONE
+               d.visibility = View.GONE
+           }
+           else
+           {
+               c.visibility = View.GONE
+               a.visibility = View.GONE
+           }
+           runOnUiThread()
+           {
+               Toast.makeText(this, "You have taken 50-50 helpline", Toast.LENGTH_SHORT).show()
+           }
+           Help1.visibility = View.GONE
+       }
+
+
+       submit.setOnClickListener()
+       {
+           var selected: Int = well.checkedRadioButtonId
+           when (selected) {
+               R.id.a -> runOnUiThread()
+               {
+                   answer = a.text.toString()
+               }
+               R.id.b -> runOnUiThread()
+               {
+                   answer = b.text.toString()
+               }
+               R.id.c -> runOnUiThread()
+               {
+                   answer = c.text.toString()
+               }
+               R.id.d -> runOnUiThread()
+               {
+                   answer = d.text.toString()
+               }
+           }
+
+           if (answer.equals(lip[i].e))
+           {
+               i++
+               if(i==lip.size)
+               {
+                       runOnUiThread()
+                       {
+                           val intent = Intent(this,Final::class.java)
+                           startActivity(intent)
+                       }
+               }
+               runOnUiThread()
+               {
+                   Toast.makeText(this, "You answered correctly", Toast.LENGTH_SHORT).show()
+                   textView10.visibility = (View.VISIBLE)
+                   var money = i*100
+                   prize += money
+
+                   textView10.text = prize.toString()
+
+               }
+
+
+
+           }
+           else {
+               runOnUiThread()
+               {
+                   val intent = Intent(this,Lose::class.java)
+                   startActivity(intent)
+                   Toast.makeText(this, "You have selected wrong option", Toast.LENGTH_SHORT).show()
+               }
+           }
+
+           if(Help1.visibility==View.GONE)
+           {
+               runOnUiThread()
+               {
+                   a.visibility = View.VISIBLE
+                   b.visibility = View.VISIBLE
+                   c.visibility = View.VISIBLE
+                   d.visibility = View.VISIBLE
+               }
+
+           }
+
+
+       }
+
+
+
+
+
+
+   }
+
+
+}.start()
+
+
+}
 }

@@ -1,14 +1,16 @@
 package com.example.finalproject
 
-import android.content.Context
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Quiiz")
-class QuizEntity {
+@Entity(tableName = "Hello")
+class QuizQUes {
 
     @PrimaryKey()
+    @ColumnInfo(name = "number")
+    var i : Int = 0
+
     @ColumnInfo(name = "Questions")
     var ques : String = ""
 
@@ -26,8 +28,4 @@ class QuizEntity {
 
     @ColumnInfo(name = "correct")
     var e : String = ""
-
-
-
-
 }
