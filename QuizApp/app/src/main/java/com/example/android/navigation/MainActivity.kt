@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
+//This class is just to intialize the main activity with the fragments
+//Main code is in GameFragment class
 class MainActivity : AppCompatActivity() {
 
 
